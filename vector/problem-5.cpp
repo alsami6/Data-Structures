@@ -2,15 +2,14 @@
 using namespace std;
 
 int main(){
-    int a[5] = {1,2,3,4,5};
-    
-    
-    vector<int> v(a,a+5);
-    
-    for(int i = 0; i < v.size(); i++){
-        cout << v[i] << " ";
-    }
+    int n;
+    cin >> n;
+    vector <int> v(n);
 
+    for(int i = 0; i < v.size(); i++){
+        cin >> v[i];
+        if();
+    }
 
     return 0;
 }
