@@ -12,18 +12,16 @@ class Node
     }
 };
 
-void insert_at_tail(Node* &head,int val){
+void insert_at_tail(Node* &head, Node* &tail,int val){
     Node* newnode = new Node(val);
     if(head == NULL){
         head = newnode;
+        tail = newnode;
         return;
     }
-
-    Node* tmp = head;
-    while(tmp->next != NULL){
-        tmp = tmp->next;
-    }
-    tmp->next = newnode;
+    
+    tail->next = newnode;
+    tail = newnode;
 }
 
 void print_linked_list(Node* head){
@@ -35,20 +33,19 @@ void print_linked_list(Node* head){
 }
 
 int main(){
-    Node* head = NULL;  
-    // Node* a = new Node(20);
-    // Node* b = new Node(30);  
-    // Node* c = new Node(40);
+    Node* head = NULL;
+    Node* tail = NULL;
 
-    // head->next = a;
-    // a->next = b;
-    // b->next = c; 
+    int val;
 
-    insert_at_tail(head, 100);
-    insert_at_tail(head, 300);
-    insert_at_tail(head, 500);
-    insert_at_tail(head, 600);
-    
+    while(true){
+        cin >> val;
+        if(val == -1){
+            break;
+        }
+        insert_at_tail(head,tail,val);
+    }
+
     print_linked_list(head);
 
     return 0;
