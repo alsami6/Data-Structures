@@ -193,19 +193,57 @@ void rotateByK(Node* &head, int k){
     head = newHead;
 }
 
-int main(){
-    Node* head = NULL;
-    insert_at_tail(head,1); 
-    insert_at_tail(head,2); 
-    insert_at_tail(head,3); 
-    insert_at_tail(head,4); 
-    insert_at_tail(head,5); 
-    // insert_at_tail(head,6); 
+Node* margeLinkedlist(Node* head1, Node* head2){
+    Node* dummyHeadNode = new Node(-1);
+    Node* head3 = dummyHeadNode;
 
-    traverse(head);
-    rotateByK(head,2);
-    cout << endl;
-    traverse(head);
+    while(head1 && head2 != NULL){
+        if(head1->val < head2->val){
+            head3->next = head1;
+            head1 = head1->next;
+        }
+        else{
+            head3->next = head2;
+            head2 = head2->next;
+        }
+        head3 = head3->next;
+    }
+    if(head1 != NULL){
+        head3->next = head1;
+    }
+    if(head2 != NULL){
+        head3->next = head2;
+    }
+    return dummyHeadNode->next;
+}
+
+int main(){
+    // Node* head = NULL;
+    // insert_at_tail(head,1); 
+    // insert_at_tail(head,2); 
+    // insert_at_tail(head,3); 
+    // insert_at_tail(head,4); 
+    // insert_at_tail(head,5); 
+    // insert_at_tail(head,6); 
+    
+    Node* head1 = NULL;
+    insert_at_tail(head1,8);
+    insert_at_tail(head1,5);
+    insert_at_tail(head1,3);
+    insert_at_tail(head1,4);
+    
+
+    Node* head2 = NULL;
+    insert_at_tail(head2,2);
+    insert_at_tail(head2,6);
+    insert_at_tail(head2,7);
+    insert_at_tail(head2,1);
+
+
+    traverse(head1);
+    traverse(head2);
+
+   traverse(margeLinkedlist(head1, head2)); 
 
     return 0;
 }
