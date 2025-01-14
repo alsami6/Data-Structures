@@ -14,6 +14,15 @@ class Node
     }
 };
 
+void preorder(Node* root){
+    if(root == NULL){
+        return;
+    }
+    cout << root->val << " ";
+    preorder(root->left);
+    preorder(root->right);
+}
+
 int main(){
     Node* root = new Node(10);
     Node* a = new Node(20);
@@ -27,6 +36,8 @@ int main(){
     a->left = c;
     b->left = d;
     b->right = e;
+
+    preorder(root);
 
     return 0;
 }

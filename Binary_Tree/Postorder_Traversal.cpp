@@ -14,6 +14,15 @@ class Node
     }
 };
 
+void postorder(Node* root){
+    if(root == NULL){
+        return;
+    }
+    postorder(root->left);
+    postorder(root->right);
+    cout << root->val << " ";
+}
+
 int main(){
     Node* root = new Node(10);
     Node* a = new Node(20);
@@ -27,6 +36,8 @@ int main(){
     a->left = c;
     b->left = d;
     b->right = e;
+
+    postorder(root);
 
     return 0;
 }
