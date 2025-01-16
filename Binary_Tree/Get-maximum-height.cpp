@@ -58,23 +58,21 @@ Node* input_tree(){
     return root;
 }
 
-void level_order(Node* root){
-    queue<Node*> q;
-    q.push(root);
-    while(!q.empty()){
-        Node* f = q.front();
-        q.pop();
-        cout << f->val << " ";
-        if(f->left != NULL)
-            q.push(f->left);
-        if(f->right)
-            q.push(f->right);
+int max_height(Node* root){
+    if(root == NULL){
+        return 0;
     }
-};
+    if(root->left == NULL && root->right == NULL){
+        return 0; 
+    }
+    int l = max_height(root->left);
+    int r = max_height(root->right);
+    return max(l,r) + 1;
+}
 
 int main(){
     Node* root = input_tree();
-    level_order(root);
+    cout << max_height(root) << endl;
 
     return 0;
 }
